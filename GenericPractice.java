@@ -1,9 +1,20 @@
 public class GenericPractice {
     public static void main(String[] args) {
-        GenericClass2<Integer, String> genericClass2 = new GenericClass2<>();
-        genericClass2.set(20, "20");
-        System.out.println(genericClass2.getKey());
-        System.out.println(genericClass2.getValue());
+        GenericClass1<Integer> class1 = new GenericClass1<>();
+        GenericClass1<Integer> class2 = new GenericClass1<>();
+        class1.set(100);
+        class2.set(100);
+        // GenericClass2<Integer, Integer> genericClass2 = new GenericClass2<>(20, 100);
+        // System.out.println(rawbox.getKey());
+        compare(class1, class2);
+    }
+
+    public static <K, V> boolean compare(GenericClass1 t1, GenericClass1 t2) {
+        if (t1.get() == t2.get()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 
@@ -25,6 +36,11 @@ public interface GenericInterface<K,V> {
 class GenericClass2<K,V> implements GenericInterface<K,V> {
     private K k;
     private V v;
+
+    GenericClass2(K k, V v) {
+        this.k = k;
+        this.v = v;
+    }
 
     public void set(K k, V v) {
         this.k = k;
