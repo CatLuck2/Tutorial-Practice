@@ -2,23 +2,18 @@ public class GenericPractice {
     public static void main(String[] args) {
         GenericClass1<Integer> class1 = new GenericClass1<>();
         GenericClass1<Integer> class2 = new GenericClass1<>();
-        class1.set(100);
+        class1.set("100");
         class2.set(100);
         // GenericClass2<Integer, Integer> genericClass2 = new GenericClass2<>(20, 100);
         // System.out.println(rawbox.getKey());
         compare(class1, class2);
     }
 
-    public static <K, V> boolean compare(GenericClass1 t1, GenericClass1 t2) {
-        if (t1.get() == t2.get()) {
-            return true;
-        } else {
-            return false;
-        }
+    public static <K,V> void compare(GenericClass2<K,V> t1, GenericClass2<K,V> t2) {
     }
 }
 
-class GenericClass1<T> {
+class GenericClass1<T extends Number> {
     private T t;
     public void set(T t) {
         this.t = t;
