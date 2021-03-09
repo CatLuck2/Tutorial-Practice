@@ -1,21 +1,35 @@
+/*
+<>：ダイヤモンド演算子
+*/
+
 public class GenericPractice {
     public static void main(String[] args) {
-        GenericClass1<Integer> class1 = new GenericClass1<>();
-        GenericClass1<Integer> class2 = new GenericClass1<>();
-        class1.set(100);
-        class2.set(100);
-        // GenericClass2<Integer, Integer> genericClass2 = new GenericClass2<>(20, 100);
-        // System.out.println(rawbox.getKey());
-        class1.compare(100);
+        // 型推論
+        GenericClass3<String, Integer> class31 = new GenericClass3<>();
+        GenericClass3<String, Exception> class32 = new GenericClass3<>();
+        test(class31);
+        test(class32);
     }
 
+    /*
+        GenericClass3<String, Integer> class31 = new GenericClass3<>();
+        GenericClass3<String, Exception> class32 = new GenericClass3<>();
+        test(class31); -> OK
+        test(class32); -> OK
+    */
     public static <K,V> void compare(GenericClass2<K,V> t1, GenericClass2<K,V> t2) {
     }
+
+    // test(GenericClass1<Integer>)はエラーになる
+    // class<A>とclass<B>に互換性はない
+    // 両者の親は、Object()
+    public static void test(GenericClass4<String> n) {
+    }
 }
- 
+
 // 境界（extendsでデータ型の型を制限）
 // IntegerはNumberのサブクラス
-class GenericClass1<T extends Number> {
+class GenericClass1<T> {
     private T t;
     public void set(T t) {
         this.t = t;
@@ -32,11 +46,13 @@ class GenericClass1<T extends Number> {
     }
 }
 
+// ジェネリクスのインターフェース
 public interface GenericInterface<K,V> {
     public K getKey();
     public V getValue();
 }
 
+// インターフェースを継承
 class GenericClass2<K,V> implements GenericInterface<K,V> {
     private K k;
     private V v;
@@ -59,3 +75,40 @@ class GenericClass2<K,V> implements GenericInterface<K,V> {
         return v;
     }
 }
+
+class GenericClass3<A,B> extends GenericClass4<A> {
+
+}
+
+class GenericClass4<A> {
+
+}
+
+// public class BoxDemo {
+
+//     public static <U> void addBox(U u, 
+//         java.util.List<Box<U>> boxes) {
+//       Box<U> box = new Box<>();
+//       box.set(u);
+//       boxes.add(box);
+//     }
+  
+//     public static <U> void outputBoxes(java.util.List<Box<U>> boxes) {
+//       int counter = 0;
+//       for (Box<U> box: boxes) {
+//         U boxContents = box.get();
+//         System.out.println("Box #" + counter + " contains [" +
+//                boxContents.toString() + "]");
+//         counter++;
+//       }
+//     }
+  
+//     public static void main(String[] args) {
+//       java.util.ArrayList<Box<Integer>> listOfIntegerBoxes =
+//         new java.util.ArrayList<>();
+//       BoxDemo.<Integer>addBox(Integer.valueOf(10), listOfIntegerBoxes);
+//       BoxDemo.addBox(Integer.valueOf(20), listOfIntegerBoxes);
+//       BoxDemo.addBox(Integer.valueOf(30), listOfIntegerBoxes);
+//       BoxDemo.outputBoxes(listOfIntegerBoxes);
+//     }
+//   }
