@@ -1,17 +1,16 @@
-class MyThread extends Thread {
-    // public void donald() {
-    //     for (int i = 0; i < 20; i++) {
-    //         System.out.println("MyThreadのrunメソッド(" + i + ")");
-    //     }
-    // }
+// Runnableでサブクラスにせず、スレッドを定義できる
+class MyThread implements Runnable { 
     public void run() {
-        System.out.println("kernel sanders");
+        for (int i = 0; i < 20; i++) {
+            System.out.println("MyThreadのrunメソッド(" + i + ")");
+        }
     }
 }
 
 public class ThreadPractice {
     public static void main(String[] args) {
-        MyThread thread = new MyThread();
-        thread.start(); // Threadクラスのrun()を呼び出す?
+        MyThread thread1 = new MyThread();
+        Thread thread2 = new Thread(thread1); // Runnableクラスを引数にする
+        thread2.start(); // Threadクラスのrun()を呼び出す?
     }
 }
