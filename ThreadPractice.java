@@ -7,6 +7,16 @@ class MyThread extends Thread {
     }
 }
 
+class MyThread2 extends Thread {
+    public boolean isRun = true;
+    public void run() {
+        while(isRun) {
+            System.out.print("*");
+        }
+        System.out.print("処理は終了");
+    }
+}
+
 public class ThreadPractice {
     public static void main(String[] args) {
         MyThread thread1 = new MyThread();
@@ -14,7 +24,8 @@ public class ThreadPractice {
         // thread2.start(); // Threadクラスのrun()を呼び出す
 
         // ThreadMethod1();
-        ThreadMethod2();
+        // ThreadMethod2();
+        ThreadMethod3();
     }
     
     static void ThreadMethod1() {
@@ -41,5 +52,18 @@ public class ThreadPractice {
         for (int i = 0; i < 20; i++) {
 			System.out.println("ThreadMethod2 (" + i + ")");
 		}
+    }
+
+    static void ThreadMethod3() {
+        MyThread2 t = new MyThread2();
+        t.start();
+
+        try {
+            Thread.sleep(5);
+        } catch (InterruptedException e) {
+            System.out.println(e);
+        }
+
+        t.isRun = false; // 好きなタイミングでスレッドを中断
     }
 }
