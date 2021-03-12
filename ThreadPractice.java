@@ -1,5 +1,5 @@
 // Runnableでサブクラスにせず、スレッドを定義できる
-class MyThread implements Runnable { 
+class MyThread extends Thread { 
     public void run() {
         for (int i = 0; i < 20; i++) {
             System.out.println("MyThreadのrunメソッド(" + i + ")");
@@ -13,7 +13,8 @@ public class ThreadPractice {
         Thread thread2 = new Thread(thread1); // Runnableクラスを引数にする
         // thread2.start(); // Threadクラスのrun()を呼び出す
 
-        ThreadMethod1();
+        // ThreadMethod1();
+        ThreadMethod2();
     }
     
     static void ThreadMethod1() {
@@ -25,5 +26,20 @@ public class ThreadPractice {
             }
             System.out.println("end");
         }
+    }
+
+    static void ThreadMethod2() {
+        MyThread t = new MyThread();
+        t.start();
+
+        try {
+            t.join(); // スレッドの処理が完了するまで、次の処理を待つ
+        } catch (InterruptedException e) {
+            System.out.println(e);
+        }
+
+        for (int i = 0; i < 20; i++) {
+			System.out.println("ThreadMethod2 (" + i + ")");
+		}
     }
 }
