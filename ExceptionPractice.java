@@ -12,7 +12,9 @@ public class ExceptionPractice {
     public static void main(String[] args) {
         int array[] = new int[10]; 
         int a = 10;
+        int b = -11;
         try { // 例外処理の開始
+            checkValue(b);
             if (a > 5) {
                 throw new MyOriginalException("aは5より大きい");
             }
@@ -31,4 +33,11 @@ public class ExceptionPractice {
         }
         System.out.println("プログラムを終了");
     }
+
+    // メソッドで例外処理
+    static void checkValue(int value) throws MyOriginalException {
+        if (value < 0) {
+            throw new MyOriginalException("引数はマイナスです");
+        }        
+    } 
 }
