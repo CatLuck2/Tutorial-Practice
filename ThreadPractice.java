@@ -17,6 +17,18 @@ class MyThread2 extends Thread {
     }
 }
 
+class MyThread3 extends Thread {
+    static int money = 0;
+    public void run() {
+        plus();
+    }
+    public synchronized void plus() { // スレッドでの処理が完了するまで、他スレッドからのアクセスを禁止
+        for (int i = 0; i < 1000; i++) {
+            MyThread3.money++;
+        }
+    }
+}
+
 public class ThreadPractice {
     public static void main(String[] args) {
         MyThread thread1 = new MyThread();
@@ -25,7 +37,8 @@ public class ThreadPractice {
 
         // ThreadMethod1();
         // ThreadMethod2();
-        ThreadMethod3();
+        // ThreadMethod3();
+        ThreadMethod4();
     }
     
     static void ThreadMethod1() {
@@ -65,5 +78,24 @@ public class ThreadPractice {
         }
 
         t.isRun = false; // 好きなタイミングでスレッドを中断
+    }
+
+    static void ThreadMethod4() {
+        MyThread3[] threads = new MyThread3[10];
+        for (int i = 0; i < 10; i++) {
+            threads[i] = new MyThread3();
+            threads[i].start();
+        }
+
+        for (int i = 0; i < 10; i++) {
+            try {
+                threads[i].join();
+            } catch (InterruptedException e) {
+                System.out.println(e);
+            }
+        }
+        // 各スレッドが他のスレッドに割り込んでしまい、処理の順番が狂う
+        // 参照->実行　ではなく　参照→別スレッドの処理→処理
+        System.out.println(MyThread3.money);
     }
 }
