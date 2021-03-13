@@ -2,6 +2,10 @@ import java.io.*;
 
 public class InputPractice {
 	public static void main(String[] args) {
+        InputFile("/Users/fuji_yosu/Desktop/test.txt");
+    }
+
+    static void InputMethod() {
         // 入力を受け取る
         InputStreamReader in = new InputStreamReader(System.in);
         // 受け取った入力とプログラムの橋渡しをする
@@ -18,7 +22,19 @@ public class InputPractice {
         }
     }
 
-    static InputDouble() {
-
+    static void InputFile(String filePath) {
+        try {
+            // filePath:保存先のパス
+            File file = new File(filePath);
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            for(int i = 0; i < 5; i++) {
+                // 指定パスに文字列を出力
+				bw.write("[" + i + "]");
+			}
+            bw.close();
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
     }
 }
