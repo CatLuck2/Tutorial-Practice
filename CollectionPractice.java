@@ -18,7 +18,7 @@ public class CollectionPractice {
         //     System.out.println("iの数:" + i);
         //     System.out.println(numbers.get(i));
         // }
-        QueueMethod1();
+        StackMethod();
     }
 
     static void CollectionMethod1() {
@@ -101,7 +101,9 @@ public class CollectionPractice {
 
     static void QueueMethod1() {
         // 要素の取り出し方法：キュー、スタック 
+        // 先入先出し：FIFO（First in First OUT）
         // ArrayListは不可
+        // Queue型に変換し、Queueのメソッドのみを扱うようにする
         Queue<String> queue = new LinkedList<String>();
         // "11111"を追加
         queue.offer("342141");
@@ -113,5 +115,17 @@ public class CollectionPractice {
         System.out.println(queue.poll());
         System.out.println(queue.poll());
         System.out.println(queue);
+    }
+
+    static void StackMethod() {
+        // 後入れ先出し:LIFO(Last in First out)
+        LinkedList<Integer> stack = new LinkedList<Integer>();
+        // 値を追加
+        stack.push(1);
+        stack.push(10);
+        stack.push(100);
+        // 最後に追加した値を取り出す
+        stack.pop();
+        System.out.println(stack);
     }
 }
