@@ -12,7 +12,7 @@ public class CollectionPractice {
         //     System.out.println("iの数:" + i);
         //     System.out.println(numbers.get(i));
         // }
-        CollectionMethod1();
+        CollectionMethod2();
     }
 
     static void CollectionMethod1() {
@@ -27,5 +27,15 @@ public class CollectionPractice {
         System.out.println(integer);
         // 100(int)
         System.out.println(i0);
+    }
+
+    static void CollectionMethod2() {
+        ArrayList<Integer> integerList = new ArrayList<Integer>();
+        // int型の値をInteger（ラッパークラス）に包んで格納
+        integerList.add(100);
+        integerList.add(200);
+        // Integerオブジェクトの値をint型で取り出せる
+        System.out.println(integerList.get(0));
+        System.out.println(integerList.get(1 ));
     }
 }
