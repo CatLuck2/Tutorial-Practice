@@ -1,9 +1,30 @@
 import java.io.*;
+import java.nio.file.FileSystem;
+
+import jdk.internal.jshell.tool.resources.version;
+
+class MyExamPoints implements Serializable {
+    int japanese;
+    int math;
+    int science;
+    int social;
+    int english;
+
+    MyExamPoints(int japanese, int math, int science, int social, int english) {
+        this.japanese = japanese;
+        this.math = math;
+        this.science = science;
+        this.social = social;
+        this.english = english;
+    }
+}
 
 public class InputPractice {
 	public static void main(String[] args) {
         // InputFile("/Users/ユーザ名/Desktop/test.txt");
-        ReadFile("/Users/fuji_yosu/Desktop/test.txt");
+        // ReadFile("/Users/fuji_yosu/Desktop/test.txt");
+        // OutputObject();
+        InputObject();
     }
 
     static void InputMethod() {
@@ -59,5 +80,40 @@ public class InputPractice {
         } catch (Exception e) {
             //TODO: handle exception
         }
+    }
+
+    static void OutputObject() {
+        MyExamPoints examPoints = new MyExamPoints(100,100,100,100,100);
+        try {
+            // デスクトップにOutput.serを書き込み
+            FileOutputStream fs = new FileOutputStream("/Users/fuji_yosu/Desktop/Output.ser");
+            ObjectOutputStream os = new ObjectOutputStream(fs);
+            // 指定パスにオブジェクトを書き込み
+            os.writeObject(examPoints);
+            os.close();
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
+    }
+
+    static void InputObject() {
+        try {
+            FileInputStream fs = new FileInputStream("/Users/fuji_yosu/Desktop/Output.ser");
+            ObjectInputStream os = new ObjectInputStream(fs);
+            // 指定パスを指定オブジェクトに変換して読み込み
+            MyExamPoints examPoints = (MyExamPoints)os.readObject();
+            // readObject()はObject型を返し、プロパティにアクセスできない
+            // Object examPoints = os.readObject();
+            os.close();
+            System.out.println(examPoints.japanese);
+            System.out.println(examPoints.math);
+            System.out.println(examPoints.science);
+            System.out.println(examPoints.social);
+            System.out.println(examPoints.english);
+		} catch(IOException e) {
+			System.out.println(e);
+		} catch (ClassNotFoundException e) {
+			System.out.println(e);
+		}
     }
 }
