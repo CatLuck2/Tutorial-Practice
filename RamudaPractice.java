@@ -39,7 +39,7 @@ public class RamudaPractice {
         // メソッド内の処理を渡す
         // 関数型インターフェースではメソッドが1つなので、問題ない
         // greetingByRambda( () -> {System.out.println("HelloWorld");} );
-        calculateTaxPrice( (double price) -> {return price * 1.1;});
+        calculateTaxPrice( price -> price * 1.1);
     }
 
     static void greeting(HelloWorld h) {
