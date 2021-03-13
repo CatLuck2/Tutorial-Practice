@@ -19,11 +19,21 @@ public class RamudaPractice {
             }
         }
         // Inner inner = new Inner();
-        greeting(new Inner("Yosuke"));
+        // 内部クラス
+        // greeting(new Inner());
+        // 匿名クラス(クラスとインスタンスの両方を実装)
+        // インターフェースを継承したクラスの定義が不要
+        greeting(new HelloWorld() {
+            // メソッドの処理も定義できる
+            public void hello() {
+                System.out.println("HelloWorld");
+            }
+        });
     }
 
     static void greeting(HelloWorld h) {
+        // 匿名クラス側でhello()の処理は実装されている
         h.hello();
-        System.out.println("Nice to meet you");
+        // System.out.println("Nice to meet you");
     } 
 }
