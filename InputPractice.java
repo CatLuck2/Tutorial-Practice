@@ -9,11 +9,16 @@ public class InputPractice {
         try {
             // 入力値から文字列データをString型で取得
             String string = reader.readLine();
-            System.out.println("入力値は" + string);
+            int val = Integer.parseInt(string);
+            System.out.println("入力値は" + val);
             reader.close();
         } catch (Exception e) {
             //TODO: handle exception
             System.out.println(e);
         }
+    }
+
+    static InputDouble() {
+
     }
 }
