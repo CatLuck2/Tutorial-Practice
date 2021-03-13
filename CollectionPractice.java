@@ -1,3 +1,4 @@
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -5,6 +6,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Collections;
 
 public class CollectionPractice {
     public static void main(String[] args) {
@@ -18,7 +20,7 @@ public class CollectionPractice {
         //     System.out.println("iの数:" + i);
         //     System.out.println(numbers.get(i));
         // }
-        StackMethod();
+        SortMethod();
     }
 
     static void CollectionMethod1() {
@@ -128,4 +130,35 @@ public class CollectionPractice {
         stack.pop();
         System.out.println(stack);
     }
+    
+    static void SortMethod() {
+        ArrayList<Point> pointList = new ArrayList<Point>();
+        pointList.add(new Point(6, 2));
+        pointList.add(new Point(10, 11));
+        pointList.add(new Point(1, 5));
+        // Pointクラスのソートを実行
+        Collections.sort(pointList);
+        for (Point p: pointList) {
+            System.out.println("値は" + p.x + " " + p.y);
+        }
+    }
+}
+
+// 独自のソートを実装
+// Comparableプロトコルを継承
+class Point implements Comparable<Point> {
+	int x;
+	int y;
+
+	Point(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+
+    // compareTo()を使用
+	public int compareTo(Point p) {
+        // yが小さい順にソート
+        // (this.x + this.y) - (p.x + p.y) -> x+yが小さい順にソート
+		return this.y - p.y;
+	}
 }
