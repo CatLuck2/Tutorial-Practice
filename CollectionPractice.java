@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.graalvm.compiler.word.Word;
 
 public class CollectionPractice {
     public static void main(String[] args) {
@@ -12,7 +15,7 @@ public class CollectionPractice {
         //     System.out.println("iの数:" + i);
         //     System.out.println(numbers.get(i));
         // }
-        CollectionMethod2();
+        HashMapMethod1();
     }
 
     static void CollectionMethod1() {
@@ -37,5 +40,19 @@ public class CollectionPractice {
         // Integerオブジェクトの値をint型で取り出せる
         System.out.println(integerList.get(0));
         System.out.println(integerList.get(1 ));
+    }
+
+    static void HashMapMethod1() {
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        map.put(1,2);
+        map.put(10,20);
+        map.put(100,200);
+        // key=value、を表示
+        System.out.println(map.entrySet());
+        // valueを表示
+        System.out.println(map.values());
+        // keyを表示
+        System.out.println(map.keySet());
+        System.out.println(map.get(10));
     }
 }
