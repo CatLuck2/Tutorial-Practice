@@ -16,7 +16,7 @@ public class CollectionPractice {
         //     System.out.println("iの数:" + i);
         //     System.out.println(numbers.get(i));
         // }
-        HashSetMethod2();
+        ForMethod1();
     }
 
     static void CollectionMethod1() {
@@ -86,6 +86,14 @@ public class CollectionPractice {
             } catch (NoSuchElementException e) {
                 System.out.println(e);
             }
+        }
+    }
+
+    static void ForMethod1() {
+        Boolean[] months = { true, false, true, false };
+        // 配列の各要素を一次変数で取り出す
+        for(Boolean str: months) {
+            System.out.println(str);
         }
     }
 }
