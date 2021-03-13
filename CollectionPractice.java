@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class CollectionPractice {
     public static void main(String[] args) {
@@ -14,7 +16,7 @@ public class CollectionPractice {
         //     System.out.println("iの数:" + i);
         //     System.out.println(numbers.get(i));
         // }
-        HashSetMethod1();
+        HashSetMethod2();
     }
 
     static void CollectionMethod1() {
@@ -68,5 +70,22 @@ public class CollectionPractice {
 
         System.out.println(set);
         System.out.println(set.contains(4));
+    }
+
+    static void HashSetMethod2() {
+        HashSet<Double> set = new HashSet<Double>();
+        set.add(1.0);
+        set.add(10.0);
+        set.add(100.0);
+        // HashMap,HashSetは要素番号(i番目)を指定できない
+        // 現在の値を取り出し、イテレータは次の値を参照
+        Iterator<Double> it = set.iterator();
+        for (int i = 0; i < set.size() + 1; i++) {
+            try {
+                System.out.println(it.next());
+            } catch (NoSuchElementException e) {
+                System.out.println(e);
+            }
+        }
     }
 }
