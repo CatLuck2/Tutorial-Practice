@@ -3,6 +3,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class CollectionPractice {
     public static void main(String[] args) {
@@ -16,7 +18,7 @@ public class CollectionPractice {
         //     System.out.println("iの数:" + i);
         //     System.out.println(numbers.get(i));
         // }
-        ForMethod1();
+        QueueMethod1();
     }
 
     static void CollectionMethod1() {
@@ -95,5 +97,21 @@ public class CollectionPractice {
         for(Boolean str: months) {
             System.out.println(str);
         }
+    }
+
+    static void QueueMethod1() {
+        // 要素の取り出し方法：キュー、スタック 
+        // ArrayListは不可
+        Queue<String> queue = new LinkedList<String>();
+        // "11111"を追加
+        queue.offer("342141");
+        queue.offer("2222");
+        queue.offer("r3er3");
+        // 先頭の要素を取り出す
+        System.out.println(queue.peek());
+        // 追加順（古い順）に取り出す
+        System.out.println(queue.poll());
+        System.out.println(queue.poll());
+        System.out.println(queue);
     }
 }
