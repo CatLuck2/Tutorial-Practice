@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import org.graalvm.compiler.word.Word;
+import java.util.HashSet;
 
 public class CollectionPractice {
     public static void main(String[] args) {
@@ -15,7 +14,7 @@ public class CollectionPractice {
         //     System.out.println("iの数:" + i);
         //     System.out.println(numbers.get(i));
         // }
-        HashMapMethod1();
+        HashSetMethod1();
     }
 
     static void CollectionMethod1() {
@@ -43,10 +42,10 @@ public class CollectionPractice {
     }
 
     static void HashMapMethod1() {
-        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
-        map.put(1,2);
-        map.put(10,20);
-        map.put(100,200);
+        HashMap<Integer, String> map = new HashMap<Integer, String>();
+        map.put(1,"2");
+        map.put(10,"20");
+        map.put(100,"200");
         // key=value、を表示
         System.out.println(map.entrySet());
         // valueを表示
@@ -54,5 +53,20 @@ public class CollectionPractice {
         // keyを表示
         System.out.println(map.keySet());
         System.out.println(map.get(10));
+    }
+
+    static void HashSetMethod1() {
+        // 同じ値が格納されるのを防ぐ
+        HashSet<Integer> set = new HashSet<Integer>();
+        // 同じ値がなければtrueで格納される
+        // あればfalseで格納されない
+        System.out.println(set.add(1));
+		System.out.println(set.add(2));
+		System.out.println(set.add(3));
+		System.out.println(set.add(4));
+		System.out.println(set.add(4));
+
+        System.out.println(set);
+        System.out.println(set.contains(4));
     }
 }
