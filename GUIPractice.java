@@ -1,4 +1,7 @@
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JTable;
+import javax.swing.JToolBar;
 
 public class GUIPractice {
     public static void main(String[] args) {
@@ -10,15 +13,27 @@ public class GUIPractice {
         // // フレームを表示
 		// frame.setVisible(true);
 
-        JFremeMethod1();
+        createJFrame();
+
+        // new GUIPractice();
     }
 
-    static void JFremeMethod1() {
+    // GUIPractice() {
+    //     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    //     getContentPane().add(JButton("fewfew"));
+    //     setSize(200, 300);
+    //     setVisible(true);
+    // }
+
+    static void createJFrame() {
         // Frameの定義
         class MyFrame extends JFrame {
             // Frameのコンストラクタ
             MyFrame() {
                 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                // ボタンを配置
+                // 画面の構造：フレーム > コンテナ > コンポーネント
+                getContentPane().add(new JButton("ボタン"));
                 setSize(200, 300);
                 setVisible(true);
             }
