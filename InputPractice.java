@@ -25,7 +25,8 @@ public class InputPractice {
         // ReadFile("/Users/fuji_yosu/Desktop/test.txt");
         // OutputObject();
         // InputObject();
-        FileOperatioMethod1("/Users/fuji_yosu/Desktop/Output.txt");
+        // FileOperatioMethod1("/Users//Desktop/Output.txt");
+        FolderOperation();
     }
 
     static void InputMethod() {
@@ -87,7 +88,7 @@ public class InputPractice {
         MyExamPoints examPoints = new MyExamPoints(100,100,100,100,100);
         try {
             // デスクトップにOutput.serを書き込み
-            FileOutputStream fs = new FileOutputStream("/Users/fuji_yosu/Desktop/Output.ser");
+            FileOutputStream fs = new FileOutputStream("/Users//Desktop/Output.ser");
             ObjectOutputStream os = new ObjectOutputStream(fs);
             // 指定パスにオブジェクトを書き込み
             os.writeObject(examPoints);
@@ -99,7 +100,7 @@ public class InputPractice {
 
     static void InputObject() {
         try {
-            FileInputStream fs = new FileInputStream("/Users/fuji_yosu/Desktop/Output.ser");
+            FileInputStream fs = new FileInputStream("/Users//Desktop/Output.ser");
             ObjectInputStream os = new ObjectInputStream(fs);
             // 指定パスを指定オブジェクトに変換して読み込み
             MyExamPoints examPoints = (MyExamPoints)os.readObject();
@@ -120,7 +121,7 @@ public class InputPractice {
 
     static void FileOperatioMethod1(String filePath) {
         File file = new File(filePath);
-        File fileForRename = new File("/Users/fuji_yosu/Desktop/Renamed.ser");
+        File fileForRename = new File("/Users//Desktop/Renamed.ser");
         if (file.exists() == false) {
             System.out.println(file + "がありません");
             return;
@@ -135,5 +136,20 @@ public class InputPractice {
         // } else {
         //     System.out.println(file + "を削除できませんでした");
         // }
+    }
+
+    static void FolderOperation() {
+        File dir1 = new File("Users");
+        File dir2 = new File("Users/testDir1");
+        // 同フォルダ内に作成される
+        // 階層下のフォルダを作成
+        if (dir1.mkdirs()) {
+            System.out.println(dir1 + "を作成しました");
+        }
+        String[] fileList = dir1.list();
+        // 階層下を表示するので、1つのディレクトリを指定する
+        for (String s : fileList) {
+            System.out.println(s);
+        }
     }
 }
