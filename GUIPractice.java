@@ -1,7 +1,7 @@
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JTable;
-import javax.swing.JToolBar;
+import javax.swing.*;
+import javax.swing.border.Border;
+
+import java.awt.*;
 
 public class GUIPractice {
     public static void main(String[] args) {
@@ -33,7 +33,12 @@ public class GUIPractice {
                 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 // ボタンを配置
                 // 画面の構造：フレーム > コンテナ > コンポーネント
-                getContentPane().add(new JButton("ボタン"));
+                // getContentPane()：コンテナを取得
+                getContentPane().add(BorderLayout.CENTER, new JButton("CENTER"));
+                getContentPane().add(BorderLayout.SOUTH, new JButton("SOUTH"));
+                getContentPane().add(BorderLayout.WEST, new JButton("WEST"));
+                getContentPane().add(BorderLayout.EAST, new JButton("EAST"));
+                getContentPane().add(BorderLayout.NORTH, new JButton("NORTH"));
                 setSize(200, 300);
                 setVisible(true);
             }
