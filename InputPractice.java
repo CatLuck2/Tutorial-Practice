@@ -1,7 +1,7 @@
 import java.io.*;
 import java.nio.file.FileSystem;
 
-import jdk.internal.jshell.tool.resources.version;
+// import jdk.internal.jshell.tool.resources.version;
 
 class MyExamPoints implements Serializable {
     int japanese;
@@ -24,7 +24,8 @@ public class InputPractice {
         // InputFile("/Users/ユーザ名/Desktop/test.txt");
         // ReadFile("/Users/fuji_yosu/Desktop/test.txt");
         // OutputObject();
-        InputObject();
+        // InputObject();
+        FileOperatioMethod1("/Users/fuji_yosu/Desktop/Output.txt");
     }
 
     static void InputMethod() {
@@ -115,5 +116,24 @@ public class InputPractice {
 		} catch (ClassNotFoundException e) {
 			System.out.println(e);
 		}
+    }
+
+    static void FileOperatioMethod1(String filePath) {
+        File file = new File(filePath);
+        File fileForRename = new File("/Users/fuji_yosu/Desktop/Renamed.ser");
+        if (file.exists() == false) {
+            System.out.println(file + "がありません");
+            return;
+        }
+        if (file.renameTo(fileForRename)) {
+            System.out.println(file + "をリネーム");
+        } else {
+            System.out.println(file + "をリネームできませんでした");
+        }
+        // if (file.delete()) {
+        //     System.out.println(file + "を削除しました");
+        // } else {
+        //     System.out.println(file + "を削除できませんでした");
+        // }
     }
 }
